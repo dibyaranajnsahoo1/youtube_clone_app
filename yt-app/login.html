@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+          /* background-image: linear-gradient(to right, #0f0c29, #4e4988, #24243e); */
+          /* background-image: conic-gradient(from 36deg at 20% 80% , #A100FFFF 0%, #000000 25%, #119CFDFF 30%); */
+        }
+        #container{
+          margin: auto;
+          margin-top: 50px;
+          /* background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% ); */
+          margin-bottom: 70px;
+          width: 30%;
+          height: auto;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          border-radius: 15px;
+          /* margin-top: 250px; */
+          padding-bottom: 20px;
+        }
+          form{
+              display: grid;
+              grid-template-columns: repeat(1,fr);
+              margin: auto;
+              width: 70%;
+
+          }
+        
+          input{
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            border: none;
+            outline: none;
+            background-color: none;
+            border-bottom: 1px solid rgb(240, 6, 80);
+            background: transparent;
+            margin-top: 40px;
+            
+          }
+          #top{
+            margin-bottom: 20px;
+            /* border: 2px solid red; */
+            width: 90%;
+            margin: auto;
+            height: 90%;
+          }
+          button{
+          
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            background-image: conic-gradient(from 36deg at 20% 40% , rgb(255, 0, 0) 0%, #0c0707 25%, rgb(17, 17, 253) 30%); 
+            color: white;
+            width: 40%;
+            padding: 10px 3px 10px 3px;
+            border: none;
+
+          }
+          p{
+            margin: auto;
+            font-size: 15px;
+            margin-top: 45px;
+            text-align: center;
+            margin-bottom: 50px;
+          }
+          button:hover{
+            cursor: pointer;
+            background-image: conic-gradient(from 36deg at 20% 40% , #A100FFFF 0%, #0c0707 25%, rgb(17, 17, 253) 30%);
+            width: 50%;
+            padding: 13px 0 13px 0;
+            font-size: 20px;
+            border-radius: 15px;
+          }
+          .home{
+            text-align: center;
+          font-size: 10px;
+          margin-top: 10px;
+
+          }
+          #yt{
+            width: 10%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 70px;
+          }
+  
+      </style>
+</head>
+<body>
+    <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Symbol.png" alt="" id="yt">
+    <div id="container">
+      <div id="top">
+        <form action="">
+           
+        <input type="username" id="login_username" placeholder="username">
+        <input type="password" id="login_password" placeholder="password">
+     </form>
+       <button onclick="Login()">LOGIN</button>
+         <p>Create an account ? <a href="autho.html">Register</a></p>
+      </div>
+      
+    </div> 
+</body>
+</html>
+<script>
+     async function Login(){
+    let login_data={
+        username:document.getElementById("login_username").value,
+        password:document.getElementById("login_password").value,
+    };
+
+   console.log("login_data:",login_data);
+
+  try{
+    
+
+   let res=await fetch(`https://masai-api-mocker.herokuapp.com/auth/login`,{
+    method:'POST',
+    body:JSON.stringify(login_data),
+    headers: {
+        'Content-Type': 'application/json',
+    },
+   });
+  
+   let data=await res.json();
+   
+  //  console.log("data:",data)
+  if(data.error==true){
+  alert("WRONG DITAILS")
+  // consolew.log(data)
+}
+if(data.error==false){
+  alert(`LOGIN successfully WELCOME ${login_data.username}`)
+  window.location="index.html"
+  localStorage.setItem("username",JSON.stringify(login_data.username));
+}
+
+    getProfile(login_data.username,token);
+}catch(error){
+  console.log(error)
+} 
+
+ }
+
+ async function getProfile(username,token){
+
+try{
+    let api=`https://masai-api-mocker.herokuapp.com/user/${username}`
+
+    let res= await fetch(api,{
+
+        headers: {
+        'Content-Type': 'application/json',
+        Authorization:`Bearer ${token}`, 
+    },
+
+    });
+    let data=await res.json();
+    // console.log("data:", data);
+}catch(error){
+  console.log(error)
+}
+ }
+ 
+
+
+ 
+     
+    //    let user=JSON.parse(localStorage.getItem("name"));
+    //    let pass=JSON.parse(localStorage.getItem("pass"));
+    //    document.querySelector("button").addEventListener("click",login);
+    // function login(event){
+    //     event.preventDefault();
+    //     let input_name=document.querySelector("#name").value;
+    //     let input_pass=document.querySelector("#pass").value;
+    //     if(input_name==user){
+    //         console.log("jjjjj")
+    //        if(input_pass==pass){
+    //          alert("Login sucessfull")
+    //          window.location="movei.html";
+    //        }
+    //        else{
+    //         alert("wrong password")
+    //        }
+    //     }else{
+    //         alert("wrong name")
+    //     }
+
+    // }
+        
+</script>

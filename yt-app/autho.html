@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body{
+        background: none;
+        /* background-image: linear-gradient(to right, #0f0c29, #4e4988, #24243e); */
+        /* background-image: conic-gradient(from 36deg at 20% 80% , #A100FFFF 0%, #000000 25%, #119CFDFF 30%); */
+      }
+      #container{
+        margin: auto;
+        margin-top: px;
+        /* background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% ); */
+         margin-bottom: 0px;
+        width: 25%;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 15px;
+        padding-bottom: 20px;
+      }
+        form{
+            display: grid;
+            grid-template-columns: repeat(1,fr);
+            margin: auto;
+            width: 70%;
+            padding-top: 40px;
+            /* padding-bottom: 40px; */
+        }
+        
+        input{
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          letter-spacing: 1px;
+          margin-bottom: 40px;
+          border: none;
+          outline: none;
+          background-color: none;
+          border-bottom: 1px solid rgba(240, 6, 80, 0.458);
+          background: transparent;
+          
+          
+        }
+        #resester-form{
+          width: 100%;
+          height: 20%;
+          border: none;
+          margin: auto;
+          margin-top: 20px;
+          margin-bottom: 30px;
+        }
+        button{
+          display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            background-image: conic-gradient(from 36deg at 20% 40% , rgb(255, 30, 0) 0%, #0c0707 25%, rgb(17, 17, 253) 30%); 
+            color: white;
+            width: 40%;
+            padding: 10px 3px 10px 3px;
+            border: none;
+        }
+        p{
+          margin: auto;
+          font-size: 15px;
+          margin-top: 45px;
+        }
+        button:hover{
+          cursor: pointer;
+          background-image: conic-gradient(from 36deg at 20% 40% , #A100FFFF 0%, #0c0707 25%, rgb(17, 17, 253) 30%);
+          width: 50%;
+          padding: 13px 0 13px 0;
+          font-size: 15px;
+          border-radius: 15px;
+        }
+        .home{
+          text-align: center;
+          font-size: 10px;
+          margin-top: 10px;
+        }
+        p{
+            margin: auto;
+            font-size: 15px;
+            margin-top: 45px;
+            text-align: center;
+            margin-bottom: 50px;
+          }
+          #yt{
+            width: 7%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* padding-top: 70px; */
+          }
+
+
+
+    </style>
+</head>
+<body>
+  <img src="https://logos-world.net/wp-content/uploads/2020/04/YouTube-Symbol.png" alt="" id="yt">
+  <div id="container">
+    <div id="resester-form">
+        <form action="">    
+        <input type="name" id="name" placeholder="name*" required>
+        <input type="email" id="email" placeholder="email*" required>
+        
+        <input type="password" id="password" placeholder="password*" required >
+        <input type="username" id="username" placeholder="username*" required>
+        <input type="number" id="mobile" placeholder="mobile*" required>
+        <input type="text" id="description" placeholder="description">
+        
+        </form>
+        <button onclick="register()">Register</button>
+        <p>Already have an account?  <a href="login.html">login</a></p>
+
+        
+    </div>
+</div>
+
+</body>
+</html>
+
+<script src="autho.js"></script>
